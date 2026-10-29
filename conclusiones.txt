@@ -1,0 +1,42 @@
+CONCLUSIONES – EJERCICIO 1: PRUEBAS DE CARGA CON K6
+
+1. Objetivo
+
+Evaluar el comportamiento del endpoint de autenticación https://fakestoreapi.com/auth/login mediante pruebas de carga utilizando k6, verificando el cumplimiento de los parámetros establecidos.
+
+2. Resultados obtenidos
+
+Se realizaron varias ejecuciones con una duración de 30 segundos y una tasa de llegada configurada entre 21 y 22 iteraciones por segundo.
+
+En las ejecuciones con una tasa de 22 iteraciones por segundo se obtuvieron los siguientes resultados:
+
+- Solicitudes ejecutadas: 661.
+- Tasa de solicitudes: aproximadamente 21.74–21.78 solicitudes por segundo.
+- Tiempo promedio de respuesta: aproximadamente 369–370 ms.
+- Tiempo máximo de respuesta: entre 617.9 y 729.37 ms.
+- Porcentaje de solicitudes HTTP fallidas: 0%.
+- Validaciones exitosas: 100%.
+
+En otra ejecución se registraron 631 solicitudes, con un promedio de respuesta de 471.98 ms. Sin embargo, el tiempo máximo alcanzó 2.26 segundos, superando el límite establecido de 1.5 segundos.
+
+3. Cumplimiento de los criterios
+
+- Rendimiento mínimo de 20 TPS: cumplido en las ejecuciones registradas.
+- Tiempo máximo de respuesta inferior a 1.5 segundos: cumplido en algunas ejecuciones, pero no de manera consistente.
+- Porcentaje de errores inferior al 3%: cumplido en las ejecuciones registradas, con un 0% de solicitudes HTTP fallidas.
+
+4. Conclusiones finales
+
+La prueba permitió comprobar que el endpoint pudo procesar una carga superior a 20 solicitudes por segundo durante las ejecuciones exitosas, manteniendo tiempos de respuesta inferiores al límite establecido.
+
+No obstante, se identificó una ejecución en la que una solicitud superó los 1.5 segundos, alcanzando un máximo de 2.26 segundos. Esto evidencia que los tiempos de respuesta pueden presentar variaciones entre ejecuciones.
+
+Por lo tanto, aunque se alcanzaron los objetivos de rendimiento y porcentaje de errores en varias ejecuciones, no se puede afirmar que el criterio de tiempo máximo se cumpla de forma consistente.
+
+Se recomienda realizar nuevas ejecuciones para evaluar la estabilidad del servicio y determinar si los tiempos de respuesta elevados corresponden a eventos aislados o a un comportamiento recurrente.
+
+5. Herramienta utilizada
+
+- Grafana k6: versión 2.3.0.
+- Lenguaje de scripting: JavaScript.
+- Sistema operativo: Ubuntu Linux.
